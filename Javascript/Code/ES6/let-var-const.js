@@ -32,3 +32,33 @@ function funcForConst() {
 }
 
 funcForConst();
+
+// Example:
+
+for (var i = 0; i < 5; i++) {
+  // Here i is global scoped that's why it's outputing 5 every time when call the setTimeout, cause after loop executing the value of i is 5 withinin the same scope
+  setTimeout(function () {
+    console.log(i);
+  }, 1000);
+}
+
+// Output
+// 5
+// 5
+// 5
+// 5
+// 5
+
+// Solution: We can just change the varibale to let and it will be blocked scoped and log every scope value every time the loop execute
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i);
+  }, 1000);
+}
+
+// Or Arrow function of ES6
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
