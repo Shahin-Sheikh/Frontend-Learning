@@ -1,3 +1,6 @@
+import UseEffectHook from "./hooks/use-effect";
+import UseStateHook from "./hooks/use-state";
+
 export default function Main() {
   const hooks = [
     "Use State",
@@ -7,6 +10,7 @@ export default function Main() {
     "Use Reducer",
     "Custom Hook",
   ];
+
   return (
     <div
       style={{
@@ -28,47 +32,17 @@ export default function Main() {
             }}
           >
             {item === "Use State" ? (
-              <div
-                href="/usestate"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </div>
+              <UseStateHook />
             ) : item === "Use Effect" ? (
-              <a
-                href="/useeffect"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </a>
+              <UseEffectHook />
             ) : item === "Use Ref" ? (
-              <a
-                href="/useref"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </a>
+              <div>{item}</div>
             ) : item === "Use Context" ? (
-              <a
-                href="/usecontext"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </a>
+              <div>{item}</div>
             ) : item === "Use Reducer" ? (
-              <a
-                href="/usereducer"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </a>
+              <div>{item}</div>
             ) : item === "Custom Hook" ? (
-              <a
-                href="/customhook"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                {item}
-              </a>
+              <div>{item}</div>
             ) : null}
           </div>
         );
