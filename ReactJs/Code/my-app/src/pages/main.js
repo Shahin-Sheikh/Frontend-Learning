@@ -1,7 +1,22 @@
+import { useContext } from "react";
+import UseContextHook, {
+  ThemeContext,
+  ThemeProvider,
+} from "./hooks/use-context";
 import UseEffectHook from "./hooks/use-effect";
 import UseStateHook from "./hooks/use-state";
 
 export default function Main() {
+  return (
+    <ThemeProvider>
+      <MainContent />
+    </ThemeProvider>
+  );
+}
+
+function MainContent() {
+  const { theme } = useContext(ThemeContext);
+
   const hooks = [
     "Use State",
     "Use Effect",
@@ -14,6 +29,7 @@ export default function Main() {
   return (
     <div
       style={{
+        backgroundColor: theme === "light" ? "#FFFFFF" : "#333333",
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gap: "20px",
@@ -38,7 +54,9 @@ export default function Main() {
             ) : item === "Use Ref" ? (
               <div>{item}</div>
             ) : item === "Use Context" ? (
-              <div>{item}</div>
+              <div>
+                <UseContextHook />
+              </div>
             ) : item === "Use Reducer" ? (
               <div>{item}</div>
             ) : item === "Custom Hook" ? (
