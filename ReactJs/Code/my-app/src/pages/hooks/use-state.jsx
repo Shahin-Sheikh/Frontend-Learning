@@ -1,6 +1,8 @@
 import { useState } from "react";
+import ModalComponent from "../../components/modal.component";
 
 export default function UseStateHook() {
+  const [isVisible, setIsVisible] = useState(false);
   const [counter, setCounter] = useState(0);
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -43,6 +45,33 @@ export default function UseStateHook() {
       <h2 style={{ textAlign: "center", marginBottom: "0" }}>
         useState Hook Examples
       </h2>
+      <button
+        onClick={() => setIsVisible(true)}
+        style={{
+          alignSelf: "center",
+          padding: "12px 24px",
+          fontSize: "16px",
+          borderRadius: "8px",
+          border: "2px solid #333",
+          backgroundColor: "#845ef7",
+          color: "white",
+          cursor: "pointer",
+          fontWeight: "bold",
+          transition: "all 0.3s ease",
+        }}
+        onMouseOver={(e) => {
+          e.target.style.backgroundColor = "#7048e8";
+          e.target.style.transform = "translateY(-2px)";
+          e.target.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+        }}
+        onMouseOut={(e) => {
+          e.target.style.backgroundColor = "#845ef7";
+          e.target.style.transform = "translateY(0)";
+          e.target.style.boxShadow = "none";
+        }}
+      >
+        📚 Learn More About useState
+      </button>
 
       {/* Counter Example */}
       <div
@@ -272,6 +301,12 @@ export default function UseStateHook() {
           Total Users: {listValues.length}
         </div>
       </div>
+      <ModalComponent
+        title="useState Hook in React"
+        content="The useState hook is a fundamental building block in React that allows you to add state management to functional components. It enables you to create state variables, update their values, and trigger re-renders when the state changes. This hook is essential for creating interactive and dynamic user interfaces in React applications."
+        isOpen={isVisible}
+        onClose={() => setIsVisible(false)}
+      />
     </div>
   );
 }

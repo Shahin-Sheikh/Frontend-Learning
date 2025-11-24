@@ -1,0 +1,22 @@
+{
+  "useState": {
+    "description": "A Hook that lets you add React state to function components.",
+    "syntax": "const [state, setState] = useState(initialState);",
+    "example": "const [count, setCount] = useState(0);"
+  },
+  "useEffect": {
+    "description": "A Hook that lets you perform side effects in function components.",
+    "syntax": "useEffect(() => { /* side effect code */ }, [dependencies]);",
+    "example": "useEffect(() => { document.title = `You clicked ${count} times`; }, [count]);"
+  },
+  "useContext": {
+    "description": "A Hook that lets you subscribe to React context without introducing nesting.",
+    "syntax": "const value = useContext(MyContext);",
+    "example": "const theme = useContext(ThemeContext);"
+  },
+  "useReducer": {
+    "description": "A Hook that lets you manage complex state logic in function components.",
+    "syntax": "const [state, dispatch] = useReducer(reducer, initialArg, init);",
+    "example": "const [state, dispatch] = useReducer(counterReducer, { count: 0 });"
+  }
+}

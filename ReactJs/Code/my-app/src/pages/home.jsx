@@ -6,15 +6,15 @@ import UseContextHook, {
 import UseEffectHook from "./hooks/use-effect";
 import UseStateHook from "./hooks/use-state";
 
-export default function Main() {
+export default function Home() {
   return (
     <ThemeProvider>
-      <MainContent />
+      <HomeContent />
     </ThemeProvider>
   );
 }
 
-function MainContent() {
+function HomeContent() {
   const { theme } = useContext(ThemeContext);
 
   const hooks = [
