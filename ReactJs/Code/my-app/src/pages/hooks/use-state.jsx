@@ -1,5 +1,31 @@
 import { useState } from "react";
 import ModalComponent from "../../components/modal.component";
+import HookCodeEditor from "../../components/hook-code-editor.component";
+
+const defaultCode = `// useState Hook Example
+// State lets you add memory to your component
+
+// Simple counter
+let count = 0;
+
+function increment() {
+  count = count + 1;
+  console.log("Count:", count);
+}
+
+increment();
+increment();
+increment();
+
+// Try with array
+const fruits = ['apple', 'banana'];
+fruits.push('orange');
+console.log("Fruits:", fruits);
+
+// Object state
+const user = { name: 'John', age: 25 };
+user.age = 26;
+console.log("User:", user);`;
 
 export default function UseStateHook() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,16 +61,11 @@ export default function UseStateHook() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "30px",
+        gap: "20px",
         padding: "20px",
         color: "#000000",
-        maxWidth: "800px",
-        margin: "0 auto",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "0" }}>
-        useState Hook Examples
-      </h2>
       <button
         onClick={() => setIsVisible(true)}
         style={{
@@ -73,234 +94,257 @@ export default function UseStateHook() {
         📚 Learn More About useState
       </button>
 
-      {/* Counter Example */}
+      {/* Main Content Grid */}
       <div
         style={{
-          border: "3px solid #333",
-          borderRadius: "15px",
-          padding: "30px",
-          backgroundColor: "#f0f0f0",
+          display: "grid",
+          gridTemplateColumns: "2fr 3fr",
+          gap: "20px",
         }}
       >
-        <h3 style={{ textAlign: "center", marginTop: "0" }}>
-          Interactive Counter
-        </h3>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "20px",
-            marginTop: "20px",
-          }}
-        >
-          <button
-            onClick={decrement}
-            style={{
-              width: "50px",
-              height: "50px",
-              fontSize: "24px",
-              borderRadius: "50%",
-              border: "2px solid #333",
-              backgroundColor: "#ff6b6b",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            -
-          </button>
+        {/* Left Column - Examples */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          {/* Counter Example */}
           <div
             style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              backgroundColor: "#FFCCCB",
-              border: "8px solid #333",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "48px",
-              fontWeight: "bold",
-              color: "#333",
+              border: "3px solid #333",
+              borderRadius: "15px",
+              padding: "30px",
+              backgroundColor: "#f0f0f0",
             }}
           >
-            {counter}
+            <h3 style={{ textAlign: "center", marginTop: "0" }}>
+              Interactive Counter
+            </h3>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "20px",
+                marginTop: "20px",
+              }}
+            >
+              <button
+                onClick={decrement}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  fontSize: "24px",
+                  borderRadius: "50%",
+                  border: "2px solid #333",
+                  backgroundColor: "#ff6b6b",
+                  color: "white",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                }}
+              >
+                -
+              </button>
+              <div
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                  backgroundColor: "#FFCCCB",
+                  border: "8px solid #333",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "48px",
+                  fontWeight: "bold",
+                  color: "#333",
+                }}
+              >
+                {counter}
+              </div>
+              <button
+                onClick={increment}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  fontSize: "24px",
+                  borderRadius: "50%",
+                  border: "2px solid #333",
+                  backgroundColor: "#51cf66",
+                  color: "white",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                }}
+              >
+                +
+              </button>
+            </div>
+            <div style={{ textAlign: "center", marginTop: "15px" }}>
+              <button
+                onClick={reset}
+                style={{
+                  padding: "10px 30px",
+                  fontSize: "16px",
+                  borderRadius: "8px",
+                  border: "2px solid #333",
+                  backgroundColor: "#4dabf7",
+                  color: "white",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                }}
+              >
+                Reset
+              </button>
+            </div>
           </div>
-          <button
-            onClick={increment}
-            style={{
-              width: "50px",
-              height: "50px",
-              fontSize: "24px",
-              borderRadius: "50%",
-              border: "2px solid #333",
-              backgroundColor: "#51cf66",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            +
-          </button>
-        </div>
-        <div style={{ textAlign: "center", marginTop: "15px" }}>
-          <button
-            onClick={reset}
-            style={{
-              padding: "10px 30px",
-              fontSize: "16px",
-              borderRadius: "8px",
-              border: "2px solid #333",
-              backgroundColor: "#4dabf7",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-          >
-            Reset
-          </button>
-        </div>
-      </div>
 
-      {/* List Management Example */}
-      <div
-        style={{
-          border: "3px solid #333",
-          borderRadius: "15px",
-          padding: "30px",
-          backgroundColor: "#f0f0f0",
-        }}
-      >
-        <h3 style={{ textAlign: "center", marginTop: "0" }}>
-          User List Manager
-        </h3>
-        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-          <input
-            type="text"
-            placeholder="Enter name..."
-            value={inputValue.name}
-            onChange={(e) => {
-              setInputValue({ ...inputValue, name: e.target.value });
-            }}
+          {/* List Management Example */}
+          <div
             style={{
-              flex: 1,
-              padding: "10px",
-              fontSize: "16px",
-              borderRadius: "8px",
-              border: "2px solid #333",
-            }}
-          />
-          <input
-            type="number"
-            placeholder="Enter age..."
-            value={inputValue.age}
-            onChange={(e) => {
-              setInputValue({ ...inputValue, age: e.target.value });
-            }}
-            style={{
-              flex: 1,
-              padding: "10px",
-              fontSize: "16px",
-              borderRadius: "8px",
-              border: "2px solid #333",
-            }}
-          />
-          <button
-            onClick={handleDataEntry}
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              borderRadius: "8px",
-              border: "2px solid #333",
-              backgroundColor: "#51cf66",
-              color: "white",
-              cursor: "pointer",
-              fontWeight: "bold",
+              border: "3px solid #333",
+              borderRadius: "15px",
+              padding: "30px",
+              backgroundColor: "#f0f0f0",
             }}
           >
-            Add User
-          </button>
-        </div>
+            <h3 style={{ textAlign: "center", marginTop: "0" }}>
+              User List Manager
+            </h3>
+            <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+              <input
+                type="text"
+                placeholder="Enter name..."
+                value={inputValue.name}
+                onChange={(e) => {
+                  setInputValue({ ...inputValue, name: e.target.value });
+                }}
+                style={{
+                  flex: 1,
+                  padding: "10px",
+                  fontSize: "16px",
+                  borderRadius: "8px",
+                  border: "2px solid #333",
+                }}
+              />
+              <input
+                type="number"
+                placeholder="Enter age..."
+                value={inputValue.age}
+                onChange={(e) => {
+                  setInputValue({ ...inputValue, age: e.target.value });
+                }}
+                style={{
+                  flex: 1,
+                  padding: "10px",
+                  fontSize: "16px",
+                  borderRadius: "8px",
+                  border: "2px solid #333",
+                }}
+              />
+              <button
+                onClick={handleDataEntry}
+                style={{
+                  padding: "10px 20px",
+                  fontSize: "16px",
+                  borderRadius: "8px",
+                  border: "2px solid #333",
+                  backgroundColor: "#51cf66",
+                  color: "white",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                }}
+              >
+                Add User
+              </button>
+            </div>
 
-        <table
-          style={{
-            border: "2px solid #333",
-            borderRadius: "8px",
-            width: "100%",
-            borderCollapse: "separate",
-            borderSpacing: "0",
-            overflow: "hidden",
-          }}
-        >
-          <thead>
-            <tr style={{ backgroundColor: "#333", color: "white" }}>
-              <th style={{ padding: "12px", textAlign: "left" }}>Name</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>Age</th>
-              <th style={{ padding: "12px", textAlign: "center" }}>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listValues?.map((data, index) => {
-              return (
-                <tr
-                  key={index}
-                  style={{
-                    backgroundColor: `${
-                      index % 2 === 0 ? "#DCFCE7" : "#FFFFFF"
-                    }`,
-                  }}
-                >
-                  <td style={{ padding: "12px", border: "none" }}>
-                    {data.name}
-                  </td>
-                  <td style={{ padding: "12px", border: "none" }}>
-                    {data.age}
-                  </td>
-                  <td
-                    style={{
-                      padding: "12px",
-                      border: "none",
-                      textAlign: "center",
-                    }}
-                  >
-                    <button
-                      onClick={() => {
-                        const updatedList = listValues.filter(
-                          (_, i) => i !== index
-                        );
-                        setListValues(updatedList);
-                      }}
+            <table
+              style={{
+                border: "2px solid #333",
+                borderRadius: "8px",
+                width: "100%",
+                borderCollapse: "separate",
+                borderSpacing: "0",
+                overflow: "hidden",
+              }}
+            >
+              <thead>
+                <tr style={{ backgroundColor: "#333", color: "white" }}>
+                  <th style={{ padding: "12px", textAlign: "left" }}>Name</th>
+                  <th style={{ padding: "12px", textAlign: "left" }}>Age</th>
+                  <th style={{ padding: "12px", textAlign: "center" }}>
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {listValues?.map((data, index) => {
+                  return (
+                    <tr
+                      key={index}
                       style={{
-                        padding: "6px 16px",
-                        fontSize: "14px",
-                        borderRadius: "6px",
-                        border: "2px solid #333",
-                        backgroundColor: "#ff6b6b",
-                        color: "white",
-                        cursor: "pointer",
-                        fontWeight: "bold",
+                        backgroundColor: `${
+                          index % 2 === 0 ? "#DCFCE7" : "#FFFFFF"
+                        }`,
                       }}
                     >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <div
-          style={{
-            marginTop: "15px",
-            textAlign: "center",
-            fontSize: "14px",
-            color: "#666",
-          }}
-        >
-          Total Users: {listValues.length}
+                      <td style={{ padding: "12px", border: "none" }}>
+                        {data.name}
+                      </td>
+                      <td style={{ padding: "12px", border: "none" }}>
+                        {data.age}
+                      </td>
+                      <td
+                        style={{
+                          padding: "12px",
+                          border: "none",
+                          textAlign: "center",
+                        }}
+                      >
+                        <button
+                          onClick={() => {
+                            const updatedList = listValues.filter(
+                              (_, i) => i !== index
+                            );
+                            setListValues(updatedList);
+                          }}
+                          style={{
+                            padding: "6px 16px",
+                            fontSize: "14px",
+                            borderRadius: "6px",
+                            border: "2px solid #333",
+                            backgroundColor: "#ff6b6b",
+                            color: "white",
+                            cursor: "pointer",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <div
+              style={{
+                marginTop: "15px",
+                textAlign: "center",
+                fontSize: "14px",
+                color: "#666",
+              }}
+            >
+              Total Users: {listValues.length}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column - Code Editor */}
+        <div>
+          <HookCodeEditor
+            defaultCode={defaultCode}
+            title="🎯 Practice useState"
+          />
         </div>
       </div>
+
       <ModalComponent
         title="useState Hook in React"
         content="The useState hook is a fundamental building block in React that allows you to add state management to functional components. It enables you to create state variables, update their values, and trigger re-renders when the state changes. This hook is essential for creating interactive and dynamic user interfaces in React applications."

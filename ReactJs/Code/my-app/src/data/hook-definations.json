@@ -18,5 +18,20 @@
     "description": "A Hook that lets you manage complex state logic in function components.",
     "syntax": "const [state, dispatch] = useReducer(reducer, initialArg, init);",
     "example": "const [state, dispatch] = useReducer(counterReducer, { count: 0 });"
+  },
+  "useRef": {
+    "description": "A Hook that lets you reference a value that's not needed for rendering or access DOM elements directly.",
+    "syntax": "const refContainer = useRef(initialValue);",
+    "example": "const inputRef = useRef(null);"
+  },
+  "useMemo": {
+    "description": "A Hook that lets you cache the result of a calculation between re-renders.",
+    "syntax": "const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);",
+    "example": "const expensiveResult = useMemo(() => computeExpensive(data), [data]);"
+  },
+  "useCallback": {
+    "description": "A Hook that lets you cache a function definition between re-renders.",
+    "syntax": "const memoizedCallback = useCallback(() => { doSomething(a, b); }, [a, b]);",
+    "example": "const handleClick = useCallback(() => { console.log('clicked'); }, []);"
   }
 }
