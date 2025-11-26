@@ -1,4 +1,5 @@
 import ConceptPage from "../../components/concept-page.component";
+import { componentsCode } from "../../data/hook-code-snippets";
 
 export default function ComponentsPage() {
   const sections = [
@@ -225,62 +226,13 @@ function Container({ children }) {
     },
   ];
 
-  const defaultCode = `// Try creating components
-function Avatar({ src, name, size = 50 }) {
-  return (
-    <img 
-      src={src} 
-      alt={name}
-      style={{
-        width: size,
-        height: size,
-        borderRadius: '50%'
-      }}
-    />
-  );
-}
-
-function UserProfile({ user }) {
-  return (
-    <div style={{ 
-      padding: '20px', 
-      border: '1px solid #ccc',
-      margin: '10px'
-    }}>
-      <Avatar src={user.avatar} name={user.name} />
-      <h3>{user.name}</h3>
-      <p>{user.email}</p>
-      <p>Role: {user.role}</p>
-    </div>
-  );
-}
-
-function App() {
-  const users = [
-    { id: 1, name: 'John', email: 'john@test.com', 
-      avatar: '👨', role: 'Developer' },
-    { id: 2, name: 'Jane', email: 'jane@test.com', 
-      avatar: '👩', role: 'Designer' }
-  ];
-  
-  return (
-    <div>
-      <h1>Team Members</h1>
-      {users.map(user => (
-        <UserProfile key={user.id} user={user} />
-      ))}
-    </div>
-  );
-}
-
-console.log("Component example ready!");`;
-
   return (
     <ConceptPage
       title="Components"
       description="Master React components - the building blocks of every React application."
       sections={sections}
-      defaultCode={defaultCode}
+      codeSnippet={componentsCode}
+      filename="components-example.jsx"
     />
   );
 }

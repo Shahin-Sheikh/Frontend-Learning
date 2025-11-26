@@ -1,25 +1,7 @@
 import { useState, useEffect } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useEffect Hook Example
-// Perform side effects in your component
-
-// Example: Simulating a timer
-let seconds = 0;
-
-function startTimer() {
-  setInterval(() => {
-    seconds++;
-    console.log("Seconds elapsed:", seconds);
-  }, 1000);
-}
-
-// Run the timer
-startTimer();
-
-// Note: In React, useEffect handles cleanup
-// to prevent memory leaks!`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useEffectCode } from "../../data/hook-code-snippets";
 
 export default function UseEffectHook() {
   const [time, setTime] = useState(new Date());
@@ -186,12 +168,9 @@ export default function UseEffectHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useEffect"
-          />
+          <CodeSnippet code={useEffectCode} filename="useEffect-example.jsx" />
         </div>
       </div>
 

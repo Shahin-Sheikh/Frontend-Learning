@@ -1,31 +1,7 @@
 import { useState } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useState Hook Example
-// State lets you add memory to your component
-
-// Simple counter
-let count = 0;
-
-function increment() {
-  count = count + 1;
-  console.log("Count:", count);
-}
-
-increment();
-increment();
-increment();
-
-// Try with array
-const fruits = ['apple', 'banana'];
-fruits.push('orange');
-console.log("Fruits:", fruits);
-
-// Object state
-const user = { name: 'John', age: 25 };
-user.age = 26;
-console.log("User:", user);`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useStateCode } from "../../data/hook-code-snippets";
 
 export default function UseStateHook() {
   const [isVisible, setIsVisible] = useState(false);
@@ -336,12 +312,9 @@ export default function UseStateHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useState"
-          />
+          <CodeSnippet code={useStateCode} filename="useState-example.jsx" />
         </div>
       </div>
 

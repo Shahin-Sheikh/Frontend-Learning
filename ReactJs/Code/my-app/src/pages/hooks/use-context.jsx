@@ -1,28 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useContext Hook Example
-// Share data across components without props
-
-// Simulating context usage
-const appConfig = {
-  theme: "dark",
-  user: { name: "John", role: "admin" },
-  settings: { notifications: true }
-};
-
-function getTheme() {
-  return appConfig.theme;
-}
-
-function getUser() {
-  return appConfig.user;
-}
-
-console.log("Current theme:", getTheme());
-console.log("Current user:", getUser());
-console.log("User role:", appConfig.user.role);`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useContextCode } from "../../data/hook-code-snippets";
 
 export const ThemeContext = createContext({
   theme: "light",
@@ -215,11 +194,11 @@ export default function UseContextHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useContext"
+          <CodeSnippet
+            code={useContextCode}
+            filename="useContext-example.jsx"
           />
         </div>
       </div>

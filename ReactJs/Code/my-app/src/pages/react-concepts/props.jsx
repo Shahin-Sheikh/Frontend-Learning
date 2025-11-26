@@ -1,4 +1,5 @@
 import ConceptPage from "../../components/concept-page.component";
+import { propsCode } from "../../data/hook-code-snippets";
 
 export default function PropsPage() {
   const sections = [
@@ -265,66 +266,13 @@ User.defaultProps = {
     },
   ];
 
-  const defaultCode = `// Try working with props
-function ProductCard({ 
-  name, 
-  price, 
-  discount = 0,
-  inStock = true,
-  onBuy 
-}) {
-  const finalPrice = price - (price * discount / 100);
-  
-  return (
-    <div style={{ 
-      border: '1px solid #ccc', 
-      padding: '15px',
-      margin: '10px',
-      borderRadius: '8px'
-    }}>
-      <h3>{name}</h3>
-      <p>
-        Price: $
-        {discount > 0 ? (
-          <>
-            <span style={{ textDecoration: 'line-through' }}>
-              {price}
-            </span>{' '}
-            <span style={{ color: 'red' }}>
-              {finalPrice.toFixed(2)}
-            </span>
-          </>
-        ) : (
-          price
-        )}
-      </p>
-      <p>Status: {inStock ? '✅ In Stock' : '❌ Out of Stock'}</p>
-      <button 
-        onClick={onBuy}
-        disabled={!inStock}
-      >
-        {inStock ? 'Buy Now' : 'Sold Out'}
-      </button>
-    </div>
-  );
-}
-
-// Using the component
-const products = [
-  { id: 1, name: 'Laptop', price: 999, discount: 10, inStock: true },
-  { id: 2, name: 'Mouse', price: 25, inStock: false }
-];
-
-products.forEach(product => {
-  console.log(\`\${product.name}: $\${product.price}\`);
-});`;
-
   return (
     <ConceptPage
       title="Props"
       description="Learn how to pass data between React components using props."
       sections={sections}
-      defaultCode={defaultCode}
+      codeSnippet={propsCode}
+      filename="props-example.jsx"
     />
   );
 }

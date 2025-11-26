@@ -1,25 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useRef Hook Example
-// Store mutable values without re-rendering
-
-let renderCount = 0;
-let previousValue = "";
-
-function updateValue(newValue) {
-  previousValue = newValue;
-  renderCount++;
-  console.log("Render count:", renderCount);
-  console.log("Previous value:", previousValue);
-}
-
-updateValue("Hello");
-updateValue("World");
-updateValue("React");
-
-console.log("Final render count:", renderCount);`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useRefCode } from "../../data/hook-code-snippets";
 
 export default function UseRefHook() {
   const [isVisible, setIsVisible] = useState(false);
@@ -229,12 +211,9 @@ export default function UseRefHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useRef"
-          />
+          <CodeSnippet code={useRefCode} filename="useRef-example.jsx" />
         </div>
       </div>
 

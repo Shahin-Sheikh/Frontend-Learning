@@ -1,4 +1,5 @@
 import ConceptPage from "../../components/concept-page.component";
+import { virtualDOMCode } from "../../data/hook-code-snippets";
 
 export default function VirtualDOMPage() {
   const sections = [
@@ -21,8 +22,7 @@ export default function VirtualDOMPage() {
     },
     {
       title: "How Virtual DOM Works",
-      content:
-        "React's Virtual DOM process happens in three main steps:",
+      content: "React's Virtual DOM process happens in three main steps:",
       code: `// Step 1: Initial Render
 const vdom1 = {
   type: 'div',
@@ -146,8 +146,7 @@ function GoodList({ items }) {
     },
     {
       title: "Common Misconceptions",
-      content:
-        "Understanding what Virtual DOM is NOT:",
+      content: "Understanding what Virtual DOM is NOT:",
       points: [
         "NOT always faster than direct DOM (depends on use case)",
         "NOT a shadow DOM (different browser feature)",
@@ -170,51 +169,13 @@ function GoodList({ items }) {
     },
   ];
 
-  const defaultCode = `// Virtual DOM concept demonstration
-function VirtualDOMDemo() {
-  const [count, setCount] = React.useState(0);
-  const [name, setName] = React.useState("John");
-  
-  // When state changes, React:
-  // 1. Creates new Virtual DOM
-  // 2. Diffs with previous Virtual DOM
-  // 3. Updates ONLY changed real DOM nodes
-  
-  console.log("Component render - Virtual DOM created");
-  
-  return {
-    // This object-like structure represents Virtual DOM
-    type: "div",
-    children: [
-      {
-        type: "h2",
-        props: { children: \`Hello, \${name}!\` }
-      },
-      {
-        type: "p",
-        props: { children: \`Count: \${count}\` }
-      },
-      {
-        type: "button",
-        props: {
-          onClick: () => setCount(count + 1),
-          children: "Increment"
-        }
-      }
-    ]
-  };
-}
-
-// Each state change creates NEW Virtual DOM
-// React compares and updates minimal real DOM
-console.log("Virtual DOM: Efficient reconciliation!");`;
-
   return (
     <ConceptPage
       title="Virtual DOM"
       description="Understand React's Virtual DOM - the secret behind its performance and declarative nature."
       sections={sections}
-      defaultCode={defaultCode}
+      codeSnippet={virtualDOMCode}
+      filename="virtual-dom-example.jsx"
     />
   );
 }

@@ -1,4 +1,5 @@
 import ConceptPage from "../../components/concept-page.component";
+import { customHooksCode } from "../../data/hook-code-snippets";
 
 export default function CustomHooksPage() {
   const sections = [
@@ -258,46 +259,13 @@ function Counter() {
     },
   ];
 
-  const defaultCode = `// Try creating custom hooks
-function useCounter(initialValue = 0) {
-  const [count, setCount] = React.useState(initialValue);
-  
-  const increment = () => setCount(c => c + 1);
-  const decrement = () => setCount(c => c - 1);
-  const reset = () => setCount(initialValue);
-  
-  return { count, increment, decrement, reset };
-}
-
-// Usage example
-function CounterApp() {
-  const counter = useCounter(10);
-  
-  console.log("Count:", counter.count);
-  
-  // Simulate usage
-  counter.increment();
-  console.log("After increment:", counter.count);
-  
-  counter.decrement();
-  console.log("After decrement:", counter.count);
-  
-  counter.reset();
-  console.log("After reset:", counter.count);
-  
-  return "Check console for results!";
-}
-
-// Run example
-const app = CounterApp();
-console.log(app);`;
-
   return (
     <ConceptPage
       title="Custom Hooks"
       description="Learn to create reusable custom hooks to share logic across React components."
       sections={sections}
-      defaultCode={defaultCode}
+      codeSnippet={customHooksCode}
+      filename="custom-hooks-example.jsx"
     />
   );
 }

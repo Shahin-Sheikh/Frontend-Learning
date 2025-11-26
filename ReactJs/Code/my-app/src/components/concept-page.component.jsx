@@ -1,10 +1,11 @@
-import HookCodeEditor from "./hook-code-editor.component";
+import CodeSnippet from "./code-snippet.component";
 
 export default function ConceptPage({
   title,
   description,
   sections,
-  defaultCode,
+  codeSnippet,
+  filename,
 }) {
   return (
     <div
@@ -110,9 +111,9 @@ export default function ConceptPage({
         ))}
       </div>
 
-      {/* Right Side - Code Editor */}
+      {/* Right Side - Code Snippet */}
       <div>
-        <HookCodeEditor defaultCode={defaultCode} title={`Try ${title}`} />
+        <CodeSnippet code={codeSnippet} filename={filename} />
       </div>
     </div>
   );

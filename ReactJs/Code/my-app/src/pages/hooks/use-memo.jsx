@@ -1,26 +1,7 @@
 import { useMemo, useState } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useMemo Hook Example
-// Cache expensive calculations
-
-function expensiveCalculation(num) {
-  console.log("Calculating...");
-  let result = 0;
-  for(let i = 0; i < 100000; i++) {
-    result += i;
-  }
-  return num * 2;
-}
-
-// Without memoization - calculates every time
-const value1 = expensiveCalculation(5);
-const value2 = expensiveCalculation(5);
-
-console.log("Result 1:", value1);
-console.log("Result 2:", value2);
-console.log("Notice: Calculated twice!");`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useMemoCode } from "../../data/hook-code-snippets";
 
 export default function UseMemoHook() {
   const [isVisible, setIsVisible] = useState(false);
@@ -320,12 +301,9 @@ export default function UseMemoHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useMemo"
-          />
+          <CodeSnippet code={useMemoCode} filename="useMemo-example.jsx" />
         </div>
       </div>
 

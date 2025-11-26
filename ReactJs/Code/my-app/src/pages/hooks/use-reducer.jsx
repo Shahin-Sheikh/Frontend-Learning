@@ -1,29 +1,7 @@
 import { useReducer, useState } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useReducer Hook Example
-// Manage complex state with actions
-
-let state = { count: 0, items: [] };
-
-function reducer(currentState, action) {
-  switch(action.type) {
-    case 'INCREMENT':
-      return { ...currentState, count: currentState.count + 1 };
-    case 'ADD_ITEM':
-      return { ...currentState, items: [...currentState.items, action.payload] };
-    default:
-      return currentState;
-  }
-}
-
-// Simulate dispatching actions
-state = reducer(state, { type: 'INCREMENT' });
-console.log("After increment:", state);
-
-state = reducer(state, { type: 'ADD_ITEM', payload: 'Apple' });
-console.log("After adding item:", state);`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useReducerCode } from "../../data/hook-code-snippets";
 
 // Reducer function for counter
 const counterReducer = (state, action) => {
@@ -394,11 +372,11 @@ export default function UseReducerHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useReducer"
+          <CodeSnippet
+            code={useReducerCode}
+            filename="useReducer-example.jsx"
           />
         </div>
       </div>

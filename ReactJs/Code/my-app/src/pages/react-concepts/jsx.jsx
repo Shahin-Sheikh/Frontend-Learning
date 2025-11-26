@@ -1,4 +1,5 @@
 import ConceptPage from "../../components/concept-page.component";
+import { jsxCode } from "../../data/hook-code-snippets";
 
 export default function JSXPage() {
   const sections = [
@@ -167,47 +168,13 @@ const items = data.map(item => (
     },
   ];
 
-  const defaultCode = `// Try JSX examples
-function Greeting({ name, age }) {
-  return (
-    <div style={{ padding: '20px', border: '1px solid #ccc' }}>
-      <h2>Hello, {name}!</h2>
-      <p>You are {age} years old.</p>
-      <p>Status: {age >= 18 ? 'Adult' : 'Minor'}</p>
-    </div>
-  );
-}
-
-function App() {
-  const users = [
-    { id: 1, name: 'John', age: 25 },
-    { id: 2, name: 'Jane', age: 30 },
-    { id: 3, name: 'Bob', age: 17 }
-  ];
-  
-  return (
-    <div>
-      <h1>User List</h1>
-      {users.map(user => (
-        <Greeting 
-          key={user.id} 
-          name={user.name} 
-          age={user.age} 
-        />
-      ))}
-    </div>
-  );
-}
-
-// Note: ReactDOM rendering won't work in this editor
-console.log("JSX is transformed to JavaScript!");`;
-
   return (
     <ConceptPage
       title="JSX"
       description="Learn JSX - the syntax extension that makes React components intuitive and powerful."
       sections={sections}
-      defaultCode={defaultCode}
+      codeSnippet={jsxCode}
+      filename="jsx-example.jsx"
     />
   );
 }

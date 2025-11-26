@@ -1,28 +1,7 @@
 import { useCallback, useState, memo } from "react";
 import ModalComponent from "../../components/modal.component";
-import HookCodeEditor from "../../components/hook-code-editor.component";
-
-const defaultCode = `// useCallback Hook Example
-// Memoize functions to prevent re-creation
-
-let functionCallCount = 0;
-
-function createHandler() {
-  functionCallCount++;
-  console.log("Handler created:", functionCallCount, "times");
-  
-  return function handleClick() {
-    console.log("Button clicked!");
-  };
-}
-
-// Without memoization
-const handler1 = createHandler();
-const handler2 = createHandler();
-const handler3 = createHandler();
-
-console.log("Same function?", handler1 === handler2);
-console.log("Total creations:", functionCallCount);`;
+import CodeSnippet from "../../components/code-snippet.component";
+import { useCallbackCode } from "../../data/hook-code-snippets";
 
 // Memoized child component - only re-renders when props change
 const Button = memo(({ onClick, children }) => {
@@ -353,11 +332,11 @@ export default function UseCallbackHook() {
           </div>
         </div>
 
-        {/* Right Column - Code Editor */}
+        {/* Right Column - Code Snippet */}
         <div>
-          <HookCodeEditor
-            defaultCode={defaultCode}
-            title="🎯 Practice useCallback"
+          <CodeSnippet
+            code={useCallbackCode}
+            filename="useCallback-example.jsx"
           />
         </div>
       </div>
