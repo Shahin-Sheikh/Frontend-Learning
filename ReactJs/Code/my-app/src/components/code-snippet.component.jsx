@@ -62,6 +62,7 @@ export default function CodeSnippet({ code, filename }) {
       <div
         style={{
           overflowY: "auto",
+          overflowX: "auto",
           maxHeight: "550px",
         }}
       >
@@ -72,6 +73,8 @@ export default function CodeSnippet({ code, filename }) {
             color: "#d4d4d4",
             fontSize: "14px",
             lineHeight: "1.6",
+            whiteSpace: "pre",
+            overflowX: "auto",
           }}
         >
           <code dangerouslySetInnerHTML={{ __html: code }} />
