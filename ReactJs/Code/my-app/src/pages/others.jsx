@@ -1,34 +1,30 @@
+import { useState } from "react";
+
 export default function OthersPage() {
+  const [count, setCount] = useState(0);
   return (
-    <div
-      style={{
-        padding: "40px",
-        textAlign: "center",
-        minHeight: "calc(100vh - 120px)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "20px",
-      }}
-    >
-      <h1 style={{ fontSize: "48px", margin: 0 }}>📦 Others</h1>
-      <p style={{ fontSize: "20px", color: "#666", maxWidth: "600px" }}>
-        Additional topics including TypeScript, CSS, HTML, and more web
-        development resources.
-      </p>
+    <>
       <div
         style={{
-          padding: "20px",
-          backgroundColor: "#f0f0f0",
-          borderRadius: "10px",
-          border: "2px solid #333",
+          padding: "10px",
         }}
       >
-        <p style={{ margin: 0, color: "#888" }}>
-          Coming Soon! Additional content will be added here.
-        </p>
+        <h4>Use State Example</h4>
+        <h1>Count: {count}</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "10px",
+          }}
+        >
+          <button onClick={() => setCount(count + 1)}>Increment</button>
+          <br />
+          <button onClick={() => setCount(count - 1)}>Decrement</button>
+          <br />
+          <button onClick={() => setCount(0)}>Reset</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
