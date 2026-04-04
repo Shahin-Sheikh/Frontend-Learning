@@ -82,19 +82,34 @@ console.log(
     availableVideoCategories
   )
 );
+
+// Problem Explanation:
+// The function `getRecommendedVideos` takes in four parameters: a list of categories the user has watched, their relevance scores, 
+// a list of available video titles, and their corresponding categories. It generates a list of recommended videos based on the 
+// relevance of the watched categories and the alphabetical order of the video titles within those categories. 
+// The output is a sorted list of video titles that are recommended to the user based on their viewing history and preferences.
+
+// Example Input:
+// watchedCategories = ["comedy", "drama"]
+// watchedCategoryRelevance = [0.9, 0.8]
+// availableVideoTitles = ["Funny Movie", "Sad Movie", "Action Movie", "Another Comedy"]
+// availableVideoCategories = ["comedy", "drama", "action", "comedy"]
+
+// Example Output: 
+
+
 // Output: ["Another Comedy", "Funny Movie", "Sad Movie", "Action Movie"]
 
-// Explanation:
-// The function `getRecommendedVideos` generates a list of video recommendations based on the user's watched categories and their relevance. It first creates a relevance map for the watched categories, then groups the available videos by their categories. It sorts the videos alphabetically within each category and sorts the categories based on relevance and whether they were watched or not. Finally, it builds the recommendation list by concatenating the sorted video titles from each category in the determined order.
-
+// Output explanation:
+// The function first creates a relevance map for the watched categories, then groups the available videos by their categories. 
+// It sorts the video titles alphabetically within each category. Next, it sorts the categories based on relevance and whether they were watched. 
+// Finally, it builds the recommendation list by concatenating the sorted video titles from each category in the determined order. 
+// In this example, "comedy" is more relevant than "drama", so its videos are listed first, followed by "drama" and then "action".
 // What techniques are used in this code?
-The code uses several techniques:
 
-1. **Mapping and Grouping**: It uses a `Map` to group video titles by their categories, allowing for efficient lookups and organization.
 
-2. **Sorting**: The code sorts the video titles alphabetically within each category and sorts the categories based on relevance and whether they were watched or not.
-
-3. **Array Manipulation**: It utilizes array methods like `forEach`, `push`, and the spread operator (`...`) to build the final recommendation list.
-
-4. **Conditional Logic**: The sorting of categories involves conditional logic to determine the order based on relevance and whether the category was watched.
-5. **Data Structures**: The use of `Map` and arrays helps in organizing and managing the data effectively throughout the function.
+// The code uses several techniques:
+// 1. **Mapping and Grouping**: It creates a relevance map for the watched categories and groups available videos by their categories using a Map.
+// 2. **Sorting**: It sorts video titles alphabetically within each category and sorts categories based on relevance and whether they were watched.
+// 3. **Array Manipulation**: It uses array methods like `forEach`, `sort`, and `push` to manipulate arrays and build the final recommendation list.
+// 4. **Conditional Logic**: It implements conditional logic to determine the sorting order of categories based on relevance and whether they were watched.
